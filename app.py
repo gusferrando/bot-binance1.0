@@ -12,8 +12,11 @@ import sys
 from decimal import Decimal, ROUND_HALF_UP
 
 
+app = Flask(__name__)
 
 # Configurar logging
+os.makedirs('logs', exist_ok=True)
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -69,7 +72,6 @@ logger.info(f"WEBHOOK_SECRET: {os.getenv('WEBHOOK_SECRET')}")
 
 
 client = UMFutures(key=api_key, secret=api_secret, base_url="https://testnet.binancefuture.com")
-app = Flask(__name__)
 
 def get_position(symbol):
     try:
@@ -302,5 +304,3 @@ def webhook():
         except ClientError as e:
             return jsonify({"error": str(e)}), 500
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)

@@ -3,7 +3,7 @@ services:
     name: bot-binance1.0
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2
     envVars:
       - key: BINANCE_API_KEY
         value: ${BINANCE_API_KEY}

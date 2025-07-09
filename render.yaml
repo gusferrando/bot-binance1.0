@@ -4,10 +4,3 @@ services:
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2
-    envVars:
-      - key: BINANCE_API_KEY
-        value: ${BINANCE_API_KEY}
-      - key: BINANCE_API_SECRET
-        value: ${BINANCE_API_SECRET}
-      - key: WEBHOOK_SECRET
-        value: ${WEBHOOK_SECRET}

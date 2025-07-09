@@ -156,13 +156,13 @@ def han_pasado_5_velas(timestamp_inicio):
     ahora = int(time.time() * 1000)
     diferencia = ahora - timestamp_inicio
     minutos_pasados = diferencia // (60 * 1000)
-    minutos_faltantes = 10 - minutos_pasados
+    minutos_faltantes = 60 - minutos_pasados
 
     if minutos_faltantes > 0:
         #logger.info(f"⌛️ Aún no pasaron 5 velas. Faltan {minutos_faltantes} min.")
         return False
     else:
-        logger.info("⏱ Han pasado 5 velas (50 min).")
+        logger.info("⏱ Han pasado 6 velas (60 min).")
         return True
 
 
